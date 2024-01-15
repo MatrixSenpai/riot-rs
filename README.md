@@ -40,12 +40,28 @@
         - [x] tournaments/by-team
         - [x] tournaments/by-id
         - NOTE: no test written, difficult to verify values
-    - [ ] league-exp
-      - [ ] v4
-    - [ ] league
-      - [ ] v4
-    - [ ] lol-challenges
-      - [ ] v1
+    - [x] league-exp
+      - [x] v4
+        - [x] entries
+          - NOTE: no test written, difficult to verify values
+    - [x] league
+      - [x] v4
+        - [x] challengerleagues/by-queue
+        - [x] entries/by-summoner
+        - [x] entries
+        - [x] grandmasterleagues/by-queue
+        - [x] leagues
+        - [x] masterleagues/by-queue
+        - NOTE: Needs tests written
+    - [x] lol-challenges
+      - [x] v1
+        - [x] config
+        - [x] percentiles
+        - [x] by-id/config
+        - [x] leaderboards/by-level
+        - [x] by-id/percentiles
+        - [x] player-data
+        - NOTE: Needs tests written
     - [ ] lol-status
       - [ ] v3
     - [ ] match

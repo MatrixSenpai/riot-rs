@@ -1,4 +1,3 @@
-// TODO: remove
 #![allow(unused, dead_code)]
 
 pub mod endpoints;
