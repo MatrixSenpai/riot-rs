@@ -1,0 +1,89 @@
+## TODO
+- [ ] More complete readme
+- [ ] Endpoints (see below)
+- [ ] Rate limit handling
+- [ ] Set up feature flags
+- [ ] Tests & CI
+
+## Endpoints
+- [ ] Riot
+    - [ ] account
+      - [ ] v1
+        - [x] accounts/by-puuid
+        - [x] accounts/by-riot-id
+        - [ ] accounts/me
+        - [x] active-shards/by-game
+          - NOTE: test broken, no appropriate api key
+- [ ] LoL
+    - [x] champion-mastery
+      - [x] v4
+        - [x] by-puuid
+        - [x] by-puuid/by-champion
+        - [x] by-puuid/top
+        - [x] by-summoner
+          - NOTE: test broken, misconfiguration reported by api
+        - [x] by-summoner/by-champion
+          - NOTE: test broken, misconfiguration reported by api
+        - [x] by-summoner/top
+        - [x] scores/by-puuid
+        - [x] scores/by-summoner
+          - NOTE: test broken, misconfiguration reported by api
+    - [x] champion
+      - [x] v3
+        - [x] champion-rotations
+          - NOTE: no test written, difficult to verify values
+    - [x] clash
+      - [x] v1
+        - [x] players/by-summoner
+        - [x] teams
+        - [x] tournaments
+        - [x] tournaments/by-team
+        - [x] tournaments/by-id
+        - NOTE: no test written, difficult to verify values
+    - [ ] league-exp
+      - [ ] v4
+    - [ ] league
+      - [ ] v4
+    - [ ] lol-challenges
+      - [ ] v1
+    - [ ] lol-status
+      - [ ] v3
+    - [ ] match
+      - [ ] v5
+    - [ ] spectator
+      - [ ] v4
+    - [ ] summoner
+      - [ ] v4
+    - [ ] tournament-stub
+      - [ ] v5
+    - [ ] tournament
+      - [ ] v5
+- [ ] LoR
+    - [ ] lor-deck
+      - [ ] v1
+    - [ ] lor-inventory
+      - [ ] v1
+    - [ ] lor-match
+      - [ ] v1
+    - [ ] lor-ranked
+      - [ ] v1
+    - [ ] lor-status
+      - [ ] v1
+- [ ] TFT
+  - [ ] tft-league
+    - [ ] v1
+  - [ ] tft-match
+    - [ ] v1
+  - [ ] tft-status
+    - [ ] v1
+  - [ ] tft-summoner
+    - [ ] v1
+- [ ] Valorant
+  - [ ] val-content
+    - [ ] v1
+  - [ ] val-match
+    - [ ] v1
+  - [ ] val-ranked
+    - [ ] v1
+  - [ ] val-status
+    - [ ] v1
