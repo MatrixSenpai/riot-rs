@@ -9,8 +9,12 @@ on:
 env:
   CARGO_TERM_COLOR: always
   API_KEY: ${{ secrets.API_KEY }}
+  TEST_GAME_NAME: ${{ vars.TEST_GAME_NAME }}
+  TEST_TAG_LINE: ${{ vars.TEST_TAG_LINE }}
   TEST_PUUID: ${{ secrets.TEST_PUUID }}
   TEST_SUMMONER_ID: ${{ secrets.TEST_SUMMONER_ID }}
+  TEST_CHAMPION_ID: ${{ vars.TEST_CHAMPION_ID }}
+  TEST_MATCH_ID: ${{ vars.TEST_MATCH_ID }}
 
 jobs:
   build:
