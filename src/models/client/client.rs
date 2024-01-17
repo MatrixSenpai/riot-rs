@@ -82,15 +82,13 @@ impl RiotApiClient {
 
         let status = response.status();
 
-        let decoded: T = response.json().await.unwrap();
-        Ok(decoded)
-        // let response_decoded: ApiResponse<T> = response.json()
-        //     .await.map_err(super::map_reqwest_error)?;
-        //
-        // match response_decoded {
-        //     ApiResponse::Successful(val) => Ok(val),
-        //     ApiResponse::RiotApiError(e) => Err(ApiError::RiotApiError(e.status, status)),
-        // }
+        let response_decoded: ApiResponse<T> = response.json()
+            .await.map_err(super::map_reqwest_error)?;
+
+        match response_decoded {
+            ApiResponse::Successful(val) => Ok(val),
+            ApiResponse::RiotApiError(e) => Err(ApiError::RiotApiError(e.status, status)),
+        }
     }
 }
 
