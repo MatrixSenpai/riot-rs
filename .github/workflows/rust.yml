@@ -8,12 +8,6 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  TEST_GAME_NAME: "MatrixSenpai"
-  TEST_TAG_LINE: "STDIN"
-  TEST_PUUID: "eK37Ej3KMTspvEPqoR5ll0Rt6uj7s-MJBrJPN2lGP0Bbrwm4OmrLmVVxtdhEvT0B_LcFQ0eyGyxb-w"
-  TEST_SUMMONER_ID: "PeNCJtA6cNeYGiXwzKBNVPhiR6VXiCm4pVNomyAuVma2igs"
-  TEST_CHAMPION_ID: "134"
-  TEST_MATCH_ID: "NA1_4894713797"
 
 jobs:
   build:
