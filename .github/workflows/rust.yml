@@ -8,6 +8,9 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  API_KEY: ${{ secrets.API_KEY }}
+  TEST_PUUID: ${{ secrets.TEST_PUUID }}
+  TEST_SUMMONER_ID: ${{ secrets.TEST_SUMMONER_ID }}
 
 jobs:
   build:
