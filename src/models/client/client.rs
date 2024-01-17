@@ -1,13 +1,13 @@
 use std::collections::HashMap;
-use std::str::FromStr;
 use std::sync::Arc;
-use serde::de::DeserializeOwned;
+use serde::{
+    Deserialize, Serialize,
+    de::DeserializeOwned,
+};
 use reqwest::{
     Client, Method, Request, RequestBuilder,
-    header::HeaderMap,
+    header::{HeaderMap, HeaderValue},
 };
-use reqwest::header::HeaderValue;
-use serde::{Deserialize, Serialize};
 use super::{
     ApiResult, RiotApiErrorStatus, ApiError,
     configuration::{ApiConfiguration, Routable, AuthConfiguration}
@@ -82,13 +82,15 @@ impl RiotApiClient {
 
         let status = response.status();
 
-        let response_decoded: ApiResponse<T> = response.json()
-            .await.map_err(super::map_reqwest_error)?;
-
-        match response_decoded {
-            ApiResponse::Successful(val) => Ok(val),
-            ApiResponse::RiotApiError(e) => Err(ApiError::RiotApiError(e.status, status)),
-        }
+        let decoded: T = response.json().await.unwrap();
+        Ok(decoded)
+        // let response_decoded: ApiResponse<T> = response.json()
+        //     .await.map_err(super::map_reqwest_error)?;
+        //
+        // match response_decoded {
+        //     ApiResponse::Successful(val) => Ok(val),
+        //     ApiResponse::RiotApiError(e) => Err(ApiError::RiotApiError(e.status, status)),
+        // }
     }
 }
 

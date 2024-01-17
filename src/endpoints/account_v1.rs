@@ -73,34 +73,26 @@ mod tests {
 
     #[tokio::test]
     async fn test_account_by_puuid() {
-        let client = crate::tests::setup();
+        let (client, test_vars) = crate::tests::setup();
 
-        let test_game_name = std::env::var("TEST_GAME_NAME").unwrap();
-        let test_tag_line = std::env::var("TEST_TAG_LINE").unwrap();
-        let test_puuid = std::env::var("TEST_PUUID").unwrap();
+        let account = client.account_by_puuid(None, test_vars.test_puuid.clone()).await.unwrap();
 
-        let account = client.account_by_puuid(None, test_puuid.clone()).await.unwrap();
-
-        assert_eq!(account.puuid, test_puuid);
-        assert_eq!(account.game_name, Some(test_game_name));
-        assert_eq!(account.tag_line, Some(test_tag_line));
+        assert_eq!(account.puuid, test_vars.test_puuid);
+        assert_eq!(account.game_name, Some(test_vars.test_game_name));
+        assert_eq!(account.tag_line, Some(test_vars.test_tag_line));
     }
 
     #[tokio::test]
     async fn test_account_by_game_name_specified_tagline() {
-        let client = crate::tests::setup();
-
-        let test_game_name = std::env::var("TEST_GAME_NAME").unwrap();
-        let test_tag_line = std::env::var("TEST_TAG_LINE").unwrap();
-        let test_puuid = std::env::var("TEST_PUUID").unwrap();
+        let (client, test_vars) = crate::tests::setup();
 
         let account = client.account_by_riot_id(
-            None, None, test_game_name.clone(), Some(test_tag_line.clone())
+            None, None, test_vars.test_game_name.clone(), Some(test_vars.test_tag_line.clone())
         ).await.unwrap();
 
-        assert_eq!(account.puuid, test_puuid);
-        assert_eq!(account.game_name, Some(test_game_name));
-        assert_eq!(account.tag_line, Some(test_tag_line));
+        assert_eq!(account.puuid, test_vars.test_puuid);
+        assert_eq!(account.game_name, Some(test_vars.test_game_name));
+        assert_eq!(account.tag_line, Some(test_vars.test_tag_line));
     }
 
     // This test is broken until i have a key that can access one of the shards

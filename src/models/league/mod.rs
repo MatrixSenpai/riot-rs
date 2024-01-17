@@ -1,7 +1,19 @@
+#[cfg(feature = "lol")]
 pub mod champion_mastery;
+#[cfg(feature = "lol")]
 pub mod champion_info;
 #[cfg(feature = "clash")]
 pub mod clash;
+#[cfg(feature = "lol")]
 pub mod league_entry;
+#[cfg(feature = "lol")]
 pub mod league_list;
+#[cfg(feature = "lol")]
 pub mod challenge_config;
+#[cfg(feature = "lol")]
+pub mod platform_data;
+
+#[cfg(feature = "lol")]
+pub mod lol_match;
+#[cfg(feature = "lol")]
+pub use lol_match::*;

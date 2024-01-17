@@ -10,7 +10,7 @@ pub struct ChampionMasteryDto {
     /// Is chest granted for this champion in the current season
     pub chest_granted: bool,
     /// Champion ID for this entry
-    pub champion_id: i64,
+    pub champion_id: i32,
     /// Last time this champion was played by this player. Timestamp in unix milliseconds.
     /// Use one of the following to get a timestamp:
     /// - [`Self::last_play_time_naive()`]

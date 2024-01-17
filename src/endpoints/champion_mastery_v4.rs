@@ -32,7 +32,7 @@ impl RiotApiClient {
         &self,
         platform_routing: Option<PlatformRouting>,
         puuid: String,
-        champion_id: i64,
+        champion_id: i32,
     ) -> ApiResult<ChampionMasteryDto> {
         let routing = platform_routing.unwrap_or(self.configuration.default_platform);
 
@@ -164,56 +164,46 @@ impl RiotApiClient {
 mod tests {
     #[tokio::test]
     async fn test_champion_mastery_by_puuid() {
-        let client = crate::tests::setup();
+        let (client, test_vars) = crate::tests::setup();
 
-        let test_puuid = std::env::var("TEST_PUUID").unwrap();
-        let test_champion = std::env::var("TEST_CHAMPION_ID")
-            .unwrap().parse::<i64>().unwrap();
-
-        let champions = client.champion_mastery_by_puuid(None, test_puuid.clone())
+        let champions = client.champion_mastery_by_puuid(None, test_vars.test_puuid.clone())
             .await.unwrap();
 
         let champion = champions.first().unwrap();
 
-        assert_eq!(champion.puuid, Some(test_puuid));
-        assert_eq!(champion.champion_id, test_champion);
+        assert_eq!(champion.puuid, Some(test_vars.test_puuid));
+        assert_eq!(champion.champion_id, test_vars.test_champion_id);
         assert!(champion.last_play_time.ge(&1701849021000));
         assert!(champion.champion_points.ge(&991726));
     }
 
     #[tokio::test]
     async fn test_champion_mastery_by_puuid_champion_id() {
-        let client = crate::tests::setup();
+        let (client, test_vars) = crate::tests::setup();
 
-        let test_puuid = std::env::var("TEST_PUUID").unwrap();
-        let test_champion = std::env::var("TEST_CHAMPION_ID")
-            .unwrap().parse::<i64>().unwrap();
+        let champion = client.champion_mastery_by_puuid_champion_id(
+            None, test_vars.test_puuid.clone(), test_vars.test_champion_id
+        ).await.unwrap();
 
-        let champion = client.champion_mastery_by_puuid_champion_id(None, test_puuid.clone(), test_champion)
-            .await.unwrap();
-
-        assert_eq!(champion.puuid, Some(test_puuid));
-        assert_eq!(champion.champion_id, test_champion);
+        assert_eq!(champion.puuid, Some(test_vars.test_puuid));
+        assert_eq!(champion.champion_id, test_vars.test_champion_id);
         assert!(champion.last_play_time.ge(&1701849021000));
         assert!(champion.champion_points.ge(&991726));
     }
 
     #[tokio::test]
     async fn test_champion_mastery_by_puuid_top() {
-        let client = crate::tests::setup();
+        let (client, test_vars) = crate::tests::setup();
 
-        let test_puuid = std::env::var("TEST_PUUID").unwrap();
-        let test_champion = std::env::var("TEST_CHAMPION_ID")
-            .unwrap().parse::<i64>().unwrap();
-
-        let champions = client.champion_mastery_by_puuid_top(None, test_puuid.clone(), None)
-            .await.unwrap();
+        let champions = client.champion_mastery_by_puuid_top(
+            None, test_vars.test_puuid.clone(), None
+        ).await.unwrap();
 
         let champion = champions.first().unwrap();
 
-        assert_eq!(champion.puuid, Some(test_puuid));
+        assert_eq!(champion.puuid, Some(test_vars.test_puuid));
         assert_eq!(champions.len(), 3);
-        assert_eq!(champion.champion_id, test_champion);
+        assert_eq!(champion.champion_id, test_vars.test_champion_id);
         assert!(champion.last_play_time.ge(&1701849021000));
         assert!(champion.champion_points.ge(&991726));
     }
@@ -260,32 +250,26 @@ mod tests {
 
     #[tokio::test]
     async fn test_champion_mastery_by_summoner_id_top() {
-        let client = crate::tests::setup();
+        let (client, test_vars) = crate::tests::setup();
 
-        let test_puuid = std::env::var("TEST_PUUID").unwrap();
-        let test_summoner_id = std::env::var("TEST_SUMMONER_ID").unwrap();
-        let test_champion = std::env::var("TEST_CHAMPION_ID")
-            .unwrap().parse::<i64>().unwrap();
-
-        let champions = client.champion_mastery_by_summoner_id_top(None, test_puuid.clone(), None)
-            .await.unwrap();
+        let champions = client.champion_mastery_by_summoner_id_top(
+            None, test_vars.test_puuid.clone(), None
+        ).await.unwrap();
 
         let champion = champions.first().unwrap();
 
-        assert_eq!(champion.puuid, Some(test_puuid));
+        assert_eq!(champion.puuid, Some(test_vars.test_puuid));
         assert_eq!(champions.len(), 3);
-        assert_eq!(champion.champion_id, test_champion);
+        assert_eq!(champion.champion_id, test_vars.test_champion_id);
         assert!(champion.last_play_time.ge(&1701849021000));
         assert!(champion.champion_points.ge(&991726));
     }
 
     #[tokio::test]
     async fn test_champion_mastery_score_by_puuid() {
-        let client = crate::tests::setup();
+        let (client, test_vars) = crate::tests::setup();
 
-        let test_puuid = std::env::var("TEST_PUUID").unwrap();
-
-        let total = client.champion_mastery_scores_by_puuid(None, test_puuid)
+        let total = client.champion_mastery_scores_by_puuid(None, test_vars.test_puuid)
             .await.unwrap();
 
         assert!(total.ge(&550))

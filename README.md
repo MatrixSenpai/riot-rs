@@ -62,10 +62,15 @@
         - [x] by-id/percentiles
         - [x] player-data
         - NOTE: Needs tests written
-    - [ ] lol-status
-      - [ ] v3
-    - [ ] match
-      - [ ] v5
+    - [x] lol-status
+      - [x] v3
+        - [x] platform-data
+        - NOTE: Needs tests written
+    - [x] match
+      - [x] v5
+        - [x] matches/by-puuid
+        - [x] match/by-id
+        - [x] match/timeline
     - [ ] spectator
       - [ ] v4
     - [ ] summoner
