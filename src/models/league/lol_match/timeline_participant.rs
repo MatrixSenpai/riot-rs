@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use serde::Deserialize;
 use super::timeline_info::MatchTimelinePosition;
 
-pub type MatchTimelineInfoFrameParticipantFrames = HashMap<usize, MatchTimelineInfoFrameParticipantFrame>;
+pub type MatchTimelineInfoFrameParticipantFrames = HashMap<String, MatchTimelineInfoFrameParticipantFrame>;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]

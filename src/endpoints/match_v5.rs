@@ -127,7 +127,7 @@ mod tests {
         let timeline = client.match_timeline_by_id(None, test_vars.test_match_id.clone()).await.unwrap();
         let first_frame = timeline.info.frames.first().unwrap();
         let binding = first_frame.participant_frames.iter()
-            .filter(|(p, _)| p == &&3)
+            .filter(|(p, _)| p == &&"3".to_string())
             .map(|(_, p)| p)
             .collect::<Vec<&crate::models::MatchTimelineInfoFrameParticipantFrame>>();
         let participant = binding.first().unwrap();
