@@ -2,6 +2,9 @@
 name = "riot-api"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "A rust crate to interact with Riot Games Developer API"
+readme = "README.md"
 
 [dependencies]
 log = "0.4.20"
