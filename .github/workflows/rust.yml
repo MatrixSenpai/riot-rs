@@ -16,6 +16,14 @@ env:
   TEST_CHAMPION_ID: ${{ vars.TEST_CHAMPION_ID }}
   TEST_MATCH_ID: ${{ vars.TEST_MATCH_ID }}
 
+  TEST_TOURNAMENT_PROVIDER_ID: "1"
+  TEST_TOURNAMENT_REGION: "NA"
+  TEST_TOURNAMENT_PROVIDER_URL: "https://tournamentrealm.matrixsenp.ai/callback"
+  TEST_TOURNAMENT_ID: "2"
+  TEST_TOURNAMENT_NAME: "STUB_TOURNAMENT"
+  TEST_TOURNAMENT_LOBBY: "STUB_LOBBY"
+  TEST_TOURNAMENT_CODE: "STUB04d1b-09f38d9d-75ea-48e3-9ba2-7cf623381d25"
+
 jobs:
   build:
     environment: test_environment
