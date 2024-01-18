@@ -1,3 +1,5 @@
+[![Rust](https://github.com/MatrixSenpai/riot-rs/actions/workflows/rust.yml/badge.svg)](https://github.com/MatrixSenpai/riot-rs/actions/workflows/rust.yml)
+
 ## TODO
 - [ ] More complete readme
 - [ ] Endpoints (see below)
