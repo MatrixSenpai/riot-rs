@@ -4,7 +4,7 @@
 - [ ] More complete readme
 - [ ] Endpoints (see below)
 - [ ] Rate limit handling
-- [ ] Set up feature flags
+- [x] Set up feature flags
 - [ ] Tests & CI
 
 ## Endpoints
