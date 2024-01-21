@@ -30,7 +30,7 @@
 //! ### Example
 //! Get a summoner by name & tagline, retrieve match ids, and then retrieve each match
 //!
-//! ```
+//! ```no_run
 //! use riot_api::prelude::*;
 //!
 //! #[tokio::main]
