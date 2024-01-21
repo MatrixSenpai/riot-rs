@@ -29,14 +29,10 @@ impl RiotApiClient {
     pub async fn account_by_riot_id(
         &self,
         region_routing: Option<RegionRouting>,
-        platform_routing: Option<PlatformRouting>,
         game_name: String,
-        tag_line: Option<String>,
+        tag_line: String,
     ) -> ApiResult<AccountDto> {
         let routing = region_routing.unwrap_or(self.configuration.default_region);
-        let tag_line = tag_line.unwrap_or(
-            platform_routing.unwrap_or(self.configuration.default_platform).to_string()
-        );
 
         self.make_request(
             format!("/riot/account/v1/accounts/by-riot-id/{game_name}/{tag_line}"),
@@ -87,7 +83,7 @@ mod tests {
         let (client, test_vars) = crate::tests::setup();
 
         let account = client.account_by_riot_id(
-            None, None, test_vars.test_game_name.clone(), Some(test_vars.test_tag_line.clone())
+            None, test_vars.test_game_name.clone(), test_vars.test_tag_line.clone()
         ).await.unwrap();
 
         assert_eq!(account.puuid, test_vars.test_puuid);

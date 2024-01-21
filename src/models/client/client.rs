@@ -8,6 +8,12 @@ use reqwest::{
     Client, Method, Request, RequestBuilder,
     header::{HeaderMap, HeaderValue},
 };
+use reqwest_middleware::{
+    ClientWithMiddleware, ClientBuilder,
+};
+use reqwest_retry::{
+    RetryTransientMiddleware, policies::ExponentialBackoff
+};
 use super::{
     ApiResult, RiotApiErrorStatus, ApiError,
     configuration::{ApiConfiguration, Routable, AuthConfiguration}
@@ -18,14 +24,23 @@ use super::{
 enum ApiResponse<T> {
     Successful(T),
     RiotApiError(RiotApiErrorStatus),
+    Unknown(String),
 }
 
 pub struct RiotApiClient {
     pub(crate) configuration: Arc<ApiConfiguration>,
-    client: Client,
+    client: ClientWithMiddleware,
 }
 impl RiotApiClient {
     pub fn new(api_configuration: ApiConfiguration, client: Client) -> Self {
+        let retry_policy = ExponentialBackoff::builder().build_with_max_retries(
+            api_configuration.retry_count
+        );
+
+        let client = ClientBuilder::new(client)
+            .with(RetryTransientMiddleware::new_with_policy(retry_policy))
+            .build();
+
         Self {
             configuration: Arc::new(api_configuration),
             client,
@@ -78,7 +93,7 @@ impl RiotApiClient {
             .map_err(super::map_reqwest_error)?;
 
         let response = self.client.execute(request)
-            .await.map_err(super::map_reqwest_error)?;
+            .await.map_err(super::map_reqwest_middleware_error)?;
 
         let status = response.status();
 
@@ -87,7 +102,9 @@ impl RiotApiClient {
 
         match response_decoded {
             ApiResponse::Successful(val) => Ok(val),
+            ApiResponse::RiotApiError(e) if status.eq(&429) => Err(ApiError::RateLimitError(e.status)),
             ApiResponse::RiotApiError(e) => Err(ApiError::RiotApiError(e.status, status)),
+            ApiResponse::Unknown(e) => Err(ApiError::UnknownTypeError(e)),
         }
     }
 }

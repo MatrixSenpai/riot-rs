@@ -1,5 +1,59 @@
 #![allow(unused, dead_code)]
 
+//! A crate to interact with the full Riot API in rust
+//!
+//! This crate provides the ability to fully interact with the Riot API using Rust. Each part is split out, although by default League
+//! is included with this crate. The breakout of features is intended to make the crate additive in a rust way.
+//!
+//! Explanation of features:
+//!
+//! ### no-default-features
+//! Interact simply with the Account endpoint and Riot Single Sign-On (RSSO). This is the base form of the crate
+//!
+//! ### default-features
+//! Interact with most features of League. Fetch matches, summoner information, champion information, queues, and more
+//!
+//! ### feature clash
+//! Enables the ability to interact with the Clash endpoint, for fetching information about player participation and
+//! performance in clash matches
+//!
+//! ### feature tournament
+//! Enables the ability to interact with the Tournament endpoint, for creating and managing content creator tournaments
+//! and generating tournament codes.
+//!
+//! ### feature tft (TODO)
+//! Allows interaction with the TFT endpoint, which enables fetching information on TFT matches and compositions
+//!
+//! ### feature val (TODO)
+//! Allows interaction with the Valorant endpoint, giving access to match information and performance
+//!
+//! ### Example
+//! Get a summoner by name & tagline, retrieve match ids, and then retrieve each match
+//!
+//! ```
+//! use riot_api::prelude::*;
+//!
+//! #[tokio::main]
+//! async fn main() {
+//!     // Create a new API client
+//!     let client = RiotApiClientBuilder::new()
+//!         .api_key("YOUR_API_KEY".to_string())
+//!         .default_platform(PlatformRouting::NA1)  // Default platform is not required, but by default will be set to NA1
+//!         .default_region(RegionRouting::AMERICAS) // Default region is not required, but by default will be set to Americas
+//!         .build().unwrap();
+//!
+//!     // Get the summoner by name#tag. Setting region to `None` will use the default region
+//!     let summoner = client.account_by_riot_id(None, "MatrixSenpai".to_string(), "STDIN".to_string()).await.unwrap();
+//!     // There are multiple optional params to include here, including count, start (for paging), start/end time, and more
+//!     let match_ids = client.matches_by_puuid(None, summoner.puuid, None, None, None, None, None, None).await.unwrap();
+//!
+//!     let mut matches = Vec::new();
+//!     for match_id in match_ids.into_iter() {
+//!         let match_item = client.match_by_id(None, match_id).await.unwrap();
+//!         matches.push(match_item);
+//!     }
+//! }
+
 pub mod endpoints;
 pub mod models;
 

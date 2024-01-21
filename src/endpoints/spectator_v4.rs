@@ -2,8 +2,10 @@ use std::collections::HashMap;
 use crate::models::{
     RiotApiClient, ApiResult,
     routing::PlatformRouting,
-    current_game_info::CurrentGameInfoDto,
-    featured_game_info::FeaturedGamesDto,
+    league::{
+        current_game_info::CurrentGameInfoDto,
+        featured_game_info::FeaturedGamesDto,
+    },
 };
 
 impl RiotApiClient {

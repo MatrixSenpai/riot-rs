@@ -2,8 +2,15 @@ use std::collections::HashMap;
 use crate::models::{
     RiotApiClient, ApiResult,
     routing::RegionRouting,
-    league_list::LeagueListDto,
-    league_entry::{LeagueEntryDto, LeagueQueueEntry, LeagueTierEntry, LeagueDivisionEntry},
+    league::{
+        league_list::LeagueListDto,
+        league_entry::{
+            LeagueEntryDto,
+            LeagueQueueEntry,
+            LeagueTierEntry,
+            LeagueDivisionEntry
+        },
+    },
 };
 
 // TODO: Needs tests written

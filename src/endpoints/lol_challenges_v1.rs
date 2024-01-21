@@ -3,7 +3,7 @@ use std::fmt::format;
 use crate::models::{
     RiotApiClient, ApiResult,
     routing::RegionRouting,
-    challenge_config::*
+    league::challenge_config::*
 };
 
 // TODO: Needs tests written

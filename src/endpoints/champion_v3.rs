@@ -3,7 +3,7 @@ use crate::{
     prelude::RiotApiClient,
     models::{
         ApiResult,
-        champion_info::ChampionInfoDto,
+        league::champion_info::ChampionInfoDto,
         routing::PlatformRouting,
     }
 };

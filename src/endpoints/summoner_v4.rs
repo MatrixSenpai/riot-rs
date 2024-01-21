@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use crate::models::{
     RiotApiClient, ApiResult,
     routing::PlatformRouting,
-    summoner::SummonerDto,
+    league::summoner::SummonerDto,
 };
 
 // TODO: needs tests written

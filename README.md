@@ -1,134 +1,40 @@
 [![Rust](https://github.com/MatrixSenpai/riot-rs/actions/workflows/rust.yml/badge.svg)](https://github.com/MatrixSenpai/riot-rs/actions/workflows/rust.yml)
 
-## TODO
+# riot-rs
+
+### Installation
+
+This crate is separated into multiple features. Use any combination of them to fit your needs:
+
+- lol
+- tournament
+- clash
+- tft
+- val
+
+By default, `lol` is enabled. Add the following to your `Cargo.toml`
+```toml
+[dependencies.riot-api]
+version = "0.1.2"
+# If you don't want `lol` feature
+default-features = "false"
+# If you want additional features
+features = ["clash", "tournament", "tft"]
+```
+
+This crate can interact with Riot's RSO with default features off, or any combination of features
+
+### Endpoints Implemented
+
+See [EndpointTasks](EndpointTasks.md)
+
+### TODO
 - [ ] More complete readme
 - [ ] Endpoints (see below)
-- [ ] Rate limit handling
+- [x] Rate limit handling
 - [x] Set up feature flags
-- [ ] Tests & CI
+- [x] Tests & CI
+  - [ ] More tests
 
-## Endpoints
-- [ ] Riot
-  - [ ] account
-    - [ ] v1
-      - [x] accounts/by-puuid
-      - [x] accounts/by-riot-id
-      - [ ] accounts/me
-      - [x] active-shards/by-game
-        - NOTE: test broken, no appropriate api key
-- [ ] LoL
-  - [x] champion-mastery
-    - [x] v4
-      - [x] by-puuid
-      - [x] by-puuid/by-champion
-      - [x] by-puuid/top
-      - [x] by-summoner
-        - NOTE: test broken, misconfiguration reported by api
-      - [x] by-summoner/by-champion
-        - NOTE: test broken, misconfiguration reported by api
-      - [x] by-summoner/top
-      - [x] scores/by-puuid
-      - [x] scores/by-summoner
-        - NOTE: test broken, misconfiguration reported by api
-  - [x] champion
-    - [x] v3
-      - [x] champion-rotations
-        - NOTE: no test written, difficult to verify values
-  - [x] clash
-    - [x] v1
-      - [x] players/by-summoner
-      - [x] teams
-      - [x] tournaments
-      - [x] tournaments/by-team
-      - [x] tournaments/by-id
-      - NOTE: no test written, difficult to verify values
-  - [x] league-exp
-    - [x] v4
-      - [x] entries
-        - NOTE: no test written, difficult to verify values
-  - [x] league
-    - [x] v4
-      - [x] challengerleagues/by-queue
-      - [x] entries/by-summoner
-      - [x] entries
-      - [x] grandmasterleagues/by-queue
-      - [x] leagues
-      - [x] masterleagues/by-queue
-      - NOTE: Needs tests written
-  - [x] lol-challenges
-    - [x] v1
-      - [x] config
-      - [x] percentiles
-      - [x] by-id/config
-      - [x] leaderboards/by-level
-      - [x] by-id/percentiles
-      - [x] player-data
-      - NOTE: Needs tests written
-  - [x] lol-status
-    - [x] v3
-      - [x] platform-data
-      - NOTE: Needs tests written
-  - [x] match
-    - [x] v5
-      - [x] matches/by-puuid
-      - [x] match/by-id
-      - [x] match/timeline
-  - [x] spectator
-    - [x] v4
-      - [x] active-games/by-summoner
-      - [x] featured-games
-      - NOTE: no test written, difficult to verify values
-  - [x] summoner
-    - [x] v4
-      - [x] fulfillment/rso-puuid
-      - [x] by-account
-      - [x] by-name
-      - [x] by-puuid
-      - [ ] me
-      - [x] by-summoner-id
-  - [x] tournament-stub
-    - [x] v5
-      - [x] codes
-      - [x] codes/by-code
-      - [x] lobby-events
-      - [x] providers
-      - [x] tournaments
-  - [x] tournament
-    - [x] v5
-      - [x] codes
-      - [x] codes/by-code
-      - [x] codes/update
-      - [x] games/by-code
-      - [x] lobby-events
-      - [x] providers
-      - [x] tournaments
-      - NOTE: no tests written but tournament-stubs should cover us
-- [ ] LoR
-  - [ ] lor-deck
-    - [ ] v1
-  - [ ] lor-inventory
-    - [ ] v1
-  - [ ] lor-match
-    - [ ] v1
-  - [ ] lor-ranked
-    - [ ] v1
-  - [ ] lor-status
-    - [ ] v1
-- [ ] TFT
-  - [ ] tft-league
-    - [ ] v1
-  - [ ] tft-match
-    - [ ] v1
-  - [ ] tft-status
-    - [ ] v1
-  - [ ] tft-summoner
-    - [ ] v1
-- [ ] Valorant
-  - [ ] val-content
-    - [ ] v1
-  - [ ] val-match
-    - [ ] v1
-  - [ ] val-ranked
-    - [ ] v1
-  - [ ] val-status
-    - [ ] v1
+riot-rs isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties.
+Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.

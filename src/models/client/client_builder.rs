@@ -13,6 +13,7 @@ pub struct RiotApiClientBuilder {
     client: Option<Client>,
     api_key: Option<String>,
     riot_token: Option<String>,
+    retry_count: Option<u32>,
     default_region: Option<RegionRouting>,
     default_platform: Option<PlatformRouting>,
 }
@@ -37,6 +38,11 @@ impl RiotApiClientBuilder {
         self
     }
 
+    pub fn default_retry_count(mut self, default: u32) -> Self {
+        self.retry_count = Some(default);
+        self
+    }
+
     pub fn default_region(mut self, default: RegionRouting) -> Self {
         self.default_region = Some(default);
         self
@@ -52,7 +58,9 @@ impl RiotApiClientBuilder {
             (_, Some(key)) => AuthConfiguration::ApiKey(key),
             _ => return Err(ConversionError::MissingDataError)
         };
-        let config = ApiConfiguration::new(auth_config, self.default_region, self.default_platform);
+        let config = ApiConfiguration::new(
+            auth_config, self.retry_count, self.default_region, self.default_platform
+        );
 
         let client = self.client.ok_or(ConversionError::MissingDataError)?;
 

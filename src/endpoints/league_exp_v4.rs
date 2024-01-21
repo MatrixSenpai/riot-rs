@@ -2,7 +2,12 @@ use std::collections::HashMap;
 use crate::models::{
     RiotApiClient, ApiResult,
     routing::RegionRouting,
-    league_entry::{LeagueEntryDto, LeagueQueueEntry, LeagueTierEntry, LeagueDivisionEntry}
+    league::league_entry::{
+        LeagueEntryDto,
+        LeagueQueueEntry,
+        LeagueTierEntry,
+        LeagueDivisionEntry
+    }
 };
 
 impl RiotApiClient {

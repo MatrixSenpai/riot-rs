@@ -4,7 +4,7 @@ use crate::{
     models::{
         ApiResult,
         routing::PlatformRouting,
-        champion_mastery::ChampionMasteryDto,
+        league::champion_mastery::ChampionMasteryDto,
     }
 };
 

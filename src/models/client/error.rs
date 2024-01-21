@@ -6,7 +6,10 @@ pub type EmptyApiResult = ApiResult<()>;
 #[derive(Debug)]
 pub enum ApiError {
     RiotApiError(RiotApiErrorMessage, reqwest::StatusCode),
+    RateLimitError(RiotApiErrorMessage),
     ReqwestError(reqwest::Error),
+    ReqwestMiddlewareError(reqwest_middleware::Error),
+    UnknownTypeError(String),
 }
 
 #[derive(Deserialize, Debug)]
@@ -27,3 +30,4 @@ pub enum ConversionError {
 }
 
 pub fn map_reqwest_error(e: reqwest::Error) -> ApiError { ApiError::ReqwestError(e) }
+pub fn map_reqwest_middleware_error(e: reqwest_middleware::Error) -> ApiError { ApiError::ReqwestMiddlewareError(e) }

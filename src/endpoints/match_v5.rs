@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use crate::models::{
     RiotApiClient, ApiResult,
     routing::RegionRouting,
-    lol_match::{MatchDto, MatchTimelineDto},
+    league::lol_match::{MatchDto, MatchTimelineDto},
 };
 
 impl RiotApiClient {
@@ -89,6 +89,9 @@ impl RiotApiClient {
 
 #[cfg(test)]
 mod tests {
+    use crate::models::league::lol_match::{
+        ParticipantDto, MatchTimelineInfoFrameParticipantFrame
+    };
 
     #[tokio::test]
     async fn test_match_list() {
@@ -108,7 +111,7 @@ mod tests {
         let match_item = client.match_by_id(None, test_vars.test_match_id.clone()).await.unwrap();
         let binding = match_item.info.participants.iter()
             .filter(|m| m.puuid == test_vars.test_puuid)
-            .collect::<Vec<&crate::models::lol_match::ParticipantDto>>();
+            .collect::<Vec<&ParticipantDto>>();
         let participant = binding.first().unwrap();
 
         assert!(match_item.metadata.participants.contains(&test_vars.test_puuid));
@@ -129,7 +132,7 @@ mod tests {
         let binding = first_frame.participant_frames.iter()
             .filter(|(p, _)| p == &&"3".to_string())
             .map(|(_, p)| p)
-            .collect::<Vec<&crate::models::lol_match::MatchTimelineInfoFrameParticipantFrame>>();
+            .collect::<Vec<&MatchTimelineInfoFrameParticipantFrame>>();
         let participant = binding.first().unwrap();
 
         assert!(timeline.metadata.participants.contains(&test_vars.test_puuid));

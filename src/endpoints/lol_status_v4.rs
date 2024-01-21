@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use crate::models::{
     RiotApiClient, ApiResult,
     routing::RegionRouting,
-    platform_data::PlatformDataDto
+    league::platform_data::PlatformDataDto
 };
 
 impl RiotApiClient {
