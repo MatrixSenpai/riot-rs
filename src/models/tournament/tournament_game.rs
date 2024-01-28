@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TournamentGamesV5 {
     pub winning_team: Vec<TournamentTeamV5>,
@@ -15,7 +15,7 @@ pub struct TournamentGamesV5 {
     pub region: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TournamentTeamV5 {
     pub puuid: String,

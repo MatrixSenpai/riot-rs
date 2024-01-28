@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize, Eq, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all="camelCase")]
 pub struct PlayerDto {
     pub summoner_id: String,
@@ -9,7 +9,7 @@ pub struct PlayerDto {
     pub role: PlayerRole,
 }
 
-#[derive(Debug, Deserialize, Ord, PartialOrd, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Ord, PartialOrd, Eq, PartialEq)]
 #[serde(rename_all="UPPERCASE")]
 pub enum PlayerPosition {
     Unselected,
@@ -21,7 +21,7 @@ pub enum PlayerPosition {
     Utility,
 }
 
-#[derive(Debug, Deserialize, Ord, PartialOrd, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Ord, PartialOrd, Eq, PartialEq)]
 #[serde(rename_all="UPPERCASE")]
 pub enum PlayerRole {
     Captain,

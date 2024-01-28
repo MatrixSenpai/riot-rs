@@ -1,10 +1,10 @@
 use std::collections::HashMap;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use super::timeline_info::MatchTimelinePosition;
 
 pub type MatchTimelineInfoFrameParticipantFrames = HashMap<String, MatchTimelineInfoFrameParticipantFrame>;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MatchTimelineInfoFrameParticipantFrame {
     pub champion_stats: ChampionStats,
@@ -21,7 +21,7 @@ pub struct MatchTimelineInfoFrameParticipantFrame {
     pub xp: i32,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ChampionStats {
     pub ability_haste: Option<i32>,
@@ -51,7 +51,7 @@ pub struct ChampionStats {
     pub spell_vamp: i32,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct DamageStats {
     pub magic_damage_done: i32,

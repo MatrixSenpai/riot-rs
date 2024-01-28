@@ -1,7 +1,7 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use super::player::PlayerDto;
 
-#[derive(Debug, Deserialize, Eq, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all="camelCase")]
 pub struct TeamDto {
     pub id: String,

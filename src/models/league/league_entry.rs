@@ -1,8 +1,8 @@
 use std::fmt::{Display, Formatter};
 use chrono::format::format;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct LeagueEntryDto {
     pub league_id: String,
@@ -21,7 +21,7 @@ pub struct LeagueEntryDto {
     pub mini_series: Vec<MiniSeriesDto>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MiniSeriesDto {
     pub losses: u32,
@@ -30,6 +30,7 @@ pub struct MiniSeriesDto {
     pub wins: u32,
 }
 
+#[derive(Debug, Deserialize, Serialize, Eq, PartialEq)]
 pub enum LeagueQueueEntry {
     RankedSolo5v5,
     RankedTFT,
@@ -49,6 +50,7 @@ impl Display for LeagueQueueEntry {
     }
 }
 
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Eq, PartialEq)]
 pub enum LeagueTierEntry {
     Challenger,
     Grandmaster,
@@ -80,6 +82,7 @@ impl Display for LeagueTierEntry {
     }
 }
 
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Eq, PartialEq)]
 pub enum LeagueDivisionEntry {
     One,
     Two,

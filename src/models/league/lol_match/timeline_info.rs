@@ -1,10 +1,10 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use super::{
     timeline_frame_event::MatchTimelineInfoFrameEvent,
     timeline_participant::MatchTimelineInfoFrameParticipantFrames,
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MatchTimelineInfoDto {
     pub frame_interval: i32,
@@ -13,7 +13,7 @@ pub struct MatchTimelineInfoDto {
     pub participants: Vec<MatchTimelineInfoParticipant>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MatchTimelineInfoFrame {
     pub events: Vec<MatchTimelineInfoFrameEvent>,
@@ -21,14 +21,14 @@ pub struct MatchTimelineInfoFrame {
     pub timestamp: i32,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MatchTimelinePosition {
     pub x: i32,
     pub y: i32,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MatchTimelineInfoParticipant {
     pub participant_id: i32,

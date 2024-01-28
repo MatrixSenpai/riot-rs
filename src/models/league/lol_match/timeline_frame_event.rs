@@ -1,7 +1,7 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use super::timeline_info::MatchTimelinePosition;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MatchTimelineInfoFrameEvent {
     pub real_timestamp: Option<i64>,
@@ -44,7 +44,7 @@ pub struct MatchTimelineInfoFrameEvent {
 }
 
 // TODO: Revisit this, because there may be unknown values...
-// #[derive(Debug, Deserialize)]
+// #[derive(Debug, Copy, Clone, Deserialize, Serialize)]
 // #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 // pub enum MatchEventType {
 //     AscendedEvent,
@@ -69,7 +69,7 @@ pub struct MatchTimelineInfoFrameEvent {
 //     WardPlaced,
 // }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MatchTimelineInfoFrameEventDamage {
     pub basic: bool,

@@ -1,8 +1,8 @@
 use std::collections::HashMap;
 use std::fmt::{Display, Formatter};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ChallengeConfigInfoDto {
     pub id: u64,
@@ -15,7 +15,7 @@ pub struct ChallengeConfigInfoDto {
     pub thresholds: HashMap<String, f64>,
 }
 
-#[derive(Debug, Deserialize, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Eq, PartialEq)]
 #[serde(rename_all = "UPPERCASE")]
 pub enum ChallengeState {
     Disabled,
@@ -24,14 +24,14 @@ pub enum ChallengeState {
     Archived,
 }
 
-#[derive(Debug, Deserialize, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Eq, PartialEq)]
 #[serde(rename_all = "UPPERCASE")]
 pub enum ChallengeTracking {
     Lifetime,
     Season
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ApexPlayerInfoDto {
     pub puuid: String,
@@ -39,7 +39,7 @@ pub struct ApexPlayerInfoDto {
     pub position: u32,
 }
 
-#[derive(Debug, Deserialize, Eq, PartialEq, Hash)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Eq, PartialEq, Hash)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum ChallengeLevel {
     None,
@@ -78,7 +78,7 @@ impl Display for ChallengeLevel {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PlayerInfoDto {
     pub challenges: Vec<ChallengeInfo>,
@@ -87,7 +87,7 @@ pub struct PlayerInfoDto {
     pub category_points: HashMap<String, ChallengeInfo>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ChallengeInfo {
     pub challenge_id: u64,
@@ -99,7 +99,7 @@ pub struct ChallengeInfo {
     pub players_in_level: i64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PlayerClientPreferences {
     pub banner_accent: String,
@@ -109,7 +109,7 @@ pub struct PlayerClientPreferences {
     pub prestige_crest_border_level: i32,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ChallengePoints {
     pub level: ChallengeLevel,

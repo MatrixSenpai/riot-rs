@@ -4,7 +4,7 @@ use crate::models::client::{
     ConversionError, configuration::Routable
 };
 
-#[derive(Debug, Deserialize, Copy, Clone, Ord, PartialOrd, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Deserialize, Ord, PartialOrd, Eq, PartialEq)]
 pub enum PlatformRouting {
     BR1,
     EUN1,

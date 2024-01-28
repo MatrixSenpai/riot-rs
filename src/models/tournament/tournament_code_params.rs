@@ -1,6 +1,6 @@
 use serde::Serialize;
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TournamentCodeParamsV5 {
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -13,7 +13,7 @@ pub struct TournamentCodeParamsV5 {
     pub enough_players: bool,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Copy, Clone, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum GamePickType {
     BlindPick,
@@ -22,14 +22,14 @@ pub enum GamePickType {
     TournamentDraft,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Copy, Clone, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum MapType {
     SummonersRift,
     HowlingAbyss
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Copy, Clone, Serialize)]
 #[serde(rename_all = "UPPERCASE")]
 pub enum SpectatorType {
     None,

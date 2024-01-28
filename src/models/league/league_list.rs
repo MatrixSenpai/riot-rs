@@ -1,7 +1,7 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use super::league_entry::MiniSeriesDto;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct LeagueListDto {
     pub league_id: String,
@@ -11,7 +11,7 @@ pub struct LeagueListDto {
     pub queue: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct LeagueItemDto {
     pub fresh_blood: bool,

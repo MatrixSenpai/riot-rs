@@ -3,7 +3,7 @@ use super::tournament_code_params::{
     GamePickType, MapType, SpectatorType,
 };
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TournamentCodeUpdateParamsV5 {
     pub allowed_participants: Option<Vec<String>>,

@@ -1,7 +1,7 @@
 use std::fmt::{Display, Formatter};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Clone, Debug)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ActiveShardDto {
     pub puuid: String,

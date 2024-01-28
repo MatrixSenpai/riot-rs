@@ -1,13 +1,13 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PerksDto {
     stat_perks: PerkStatsDto,
     styles: Vec<PerkStyleDto>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PerkStatsDto {
     pub defense: i32,
@@ -15,7 +15,7 @@ pub struct PerkStatsDto {
     pub offense: i32,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PerkStyleDto {
     pub description: String,
@@ -23,7 +23,7 @@ pub struct PerkStyleDto {
     pub style: i32,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PerkStyleSelectionDto {
     pub perk: i32,

@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct CurrentGameInfoDto {
     pub game_id: i64,
@@ -15,7 +15,7 @@ pub struct CurrentGameInfoDto {
     pub observers: Observer,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct BannedChampion {
     pub pick_turn: i32,
@@ -23,13 +23,13 @@ pub struct BannedChampion {
     pub team_id: i64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Observer {
     pub encryption_key: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct CurrentGameParticipant {
     pub champion_id: i64,
@@ -45,7 +45,7 @@ pub struct CurrentGameParticipant {
     pub puuid: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Perks {
     pub perk_ids: Vec<i64>,
@@ -53,7 +53,7 @@ pub struct Perks {
     pub perk_sub_style: i64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct GameCustomizationObject {
     pub category: String,

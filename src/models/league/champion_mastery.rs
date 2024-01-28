@@ -1,7 +1,7 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use chrono::{DateTime, NaiveDateTime, TimeZone, Utc};
 
-#[derive(Deserialize, Clone, Debug)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 /// A single object containing champion mastery information for a player/champion combination
 pub struct ChampionMasteryDto {

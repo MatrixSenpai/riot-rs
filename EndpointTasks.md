@@ -2,6 +2,7 @@
 
 A list of endpoints that are implemented and those which have yet to be completed
 
+- [ ] LCU
 - [ ] Riot
     - [ ] account
         - [ ] v1

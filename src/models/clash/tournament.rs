@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize, Eq, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all="camelCase")]
 pub struct TournamentDto {
     pub id: u32,
@@ -10,7 +10,7 @@ pub struct TournamentDto {
     pub schedule: Vec<TournamentPhaseDto>,
 }
 
-#[derive(Debug, Deserialize, Eq, PartialEq)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all="camelCase")]
 pub struct TournamentPhaseDto {
     pub id: u32,

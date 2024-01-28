@@ -1,16 +1,16 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use super::current_game_info::{
     Observer, BannedChampion,
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct FeaturedGamesDto {
     pub game_list: Vec<FeaturedGameInfoDto>,
     pub client_refresh_interval: i64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct FeaturedGameInfoDto {
     pub game_mode: String,
@@ -26,7 +26,7 @@ pub struct FeaturedGameInfoDto {
     pub platform_id: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Participant {
     pub bot: bool,

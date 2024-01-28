@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PlatformDataDto {
     pub id: String,
@@ -10,7 +10,7 @@ pub struct PlatformDataDto {
     pub incidents: Vec<StatusDto>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct StatusDto {
     pub id: i32,
@@ -24,7 +24,7 @@ pub struct StatusDto {
     pub platforms: Vec<Platform>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Eq, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum MaintenanceStatus {
     Scheduled,
@@ -32,7 +32,7 @@ pub enum MaintenanceStatus {
     Complete,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Eq, PartialEq)]
 #[serde(rename_all = "lowercase")]
 pub enum IncidentSeverity {
     Info,
@@ -40,14 +40,14 @@ pub enum IncidentSeverity {
     Critical,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ContentDto {
     pub locale: String,
     pub content: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct UpdateDto {
     pub id: i32,
@@ -59,7 +59,7 @@ pub struct UpdateDto {
     pub updated_at: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Eq, PartialEq)]
 #[serde(rename_all = "lowercase")]
 pub enum PublishLocation {
     RiotClient,
@@ -67,7 +67,7 @@ pub enum PublishLocation {
     Game,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Eq, PartialEq)]
 #[serde(rename_all = "lowercase")]
 pub enum Platform {
     Windows,
