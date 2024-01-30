@@ -20,6 +20,10 @@ features = ["derive"]
 version = "0.11.22"
 features = ["json", "serde_json"]
 
+[target.'cfg(windows)'.dependencies.windows]
+version = "0.52.0"
+optional = true
+
 [dev-dependencies]
 reqwest = "0.11.22"
 dotenv = "0.15.0"
@@ -37,3 +41,4 @@ clash = []
 tournament = []
 tft = []
 val = []
+lcu = ["windows"]

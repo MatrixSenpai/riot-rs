@@ -14,4 +14,7 @@ pub mod tournament;
 pub mod account;
 pub mod active_shard;
 
+#[cfg(feature = "lcu")]
+pub(crate) mod lcu_connector;
+
 pub use client::*;

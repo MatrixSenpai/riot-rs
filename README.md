@@ -9,6 +9,7 @@ This crate is separated into multiple features. Use any combination of them to f
 - lol
 - tournament
 - clash
+- lcu
 - tft
 - val
 
