@@ -1,5 +1,2 @@
-
-struct LcuConnector {
-    uri: Option<String>,
-    port: Option<String>,
-}
+mod lcu_connector;
+mod lcu_connector_info;
