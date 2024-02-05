@@ -1,4 +1,5 @@
 
+#[derive(Debug)]
 pub(super) struct LcuConnectorInfo {
     pub username: String,
     pub process_name: String,
