@@ -1,4 +1,3 @@
-
 pub mod client;
 pub mod routing;
 
@@ -16,5 +15,7 @@ pub mod active_shard;
 
 #[cfg(feature = "lcu")]
 pub(crate) mod lcu_connector;
+#[cfg(feature = "lcu")]
+pub mod lcu;
 
 pub use client::*;
