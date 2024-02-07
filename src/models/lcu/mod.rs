@@ -5,3 +5,4 @@ pub mod client_config;
 pub mod entitlements_token;
 pub mod banners;
 pub mod career_stats;
+mod catalog;
